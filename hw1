@@ -1,1 +1,173 @@
+Q1
+
+function selectListsWithLengthMultiple(lists, multiple=2){
+	
+	const x = lists.filter(list=>  list.length%multiple==0  );    
+
+	return x;
+}
+//console.log(selectListsWithLengthMultiple([[1, 2, 3], [1, 2], []]));
+
+Q2
+
+function reverse(text){
+    return text.split("").reduce(function(reversed, char){
+           return char + reversed;}, "");
+}
+//console.log(reverse(""));
+
+Q3
+
+function isPalindrome(text){
+	const x = text.split("").reduce(function(reversed, char){
+           return char + reversed;}, "")
+
+	return (text===x ? true : false); 
+}
+//console.log(isPalindrome("anna"))
+
+Q4
+
+function minLenArg(...objs){
+	const x = objs.reduce((a,b)=>
+		a.length <= b.length ? a:b
+	);
+	return x; 
+}
+//console.log(minLenArg([], 'ab', [3], ''));
+
+Q5
+
+function formatInt(int, {base=10,n=3,sep=','} = {base:10,n:3,sep:','}) {
+	int = int.toString(base);
+	int = int.match(/.{n}/g);
+	int = int.join(sep);
+	return int;	
+}
+//console.log(formatInt(99999999));
+
+Q6
+
+function isEvenParity(int){
+
+var binaryint = int.toString(2); 
+
+var  sum = binaryint.split("").reduce(function(acc,current){ return (acc*1) + (current*1)});
+ 
+return sum%2===0 ? true:false
+
+}
+//console.log(isEvenParity(0xd));
+
+Q7
+
+function bitIndexesToInt(indexes){
+	
+	const newIndexes = indexes.map(indexes=>Math.pow(2,indexes));
+	
+
+
+return indexes.length >0 ? newIndexes.reduce(function(acc,current)
+{ return (acc*1) + (current*1)}) : 0;
+
+}
+//console.log(bitIndexesToInt([0,1]));
+
+Q8
+
+function intToBitIndexes(int){
+	const x = int.toString(2); 
+	const y = (x.split("").reverse());
+	const z = y.map( i => i*2 );
+	const index = z.findIndex(i=>i===2);
+	var arr = [];
+	arr.push(index);
+	return arr;
+}
+//console.log(intToBitIndexes(16));
+
+Q9
+
+function multiIndex (obj,indexes){
+	const sepindexes = indexes.split(".");
+	const tekli = sepindexes.length == 1 ? (obj[indexes])   :2;
+	const ikili = sepindexes.length = 2 ? obj['a'].find( function ( element  )  { return element=>element.indexOf(sepindexes[1]);  }   ):3;
+	//const uclu = obj['a'].find( function (element)  { return element=>element.indexOf(sepindexes[2]);  }   )
+
+}
+//console.log(multiIndex({a: [ 22, { b: 42} ]}, 'a.1.b'));
+
+Q10
+
+function zip(list,list2){
+
+	var list3 = list.map(function(a,b){ return [a,list2[b]] });
+	return list3;
+}
+//console.log(zip([1, 2, 3], ['a', 'b', 'c']));
+
+Q11
+
+function multiZip(...lists){
+
+	const x = lists.reduce(
+		(list1,list2) =>list1.length >= list2.length ? list1.map( function(a,b) {return [a,list2[b]]}) :  0 );
+return x;
+
+}
+//console.log(multiZip([1, 2, 3,4], [4,5,6,7],[7,8,9,10],[10,20,30,40]));
+
+Q12
+
+function multiZipAny(...lists){	
+	const x = lists.reduce(
+		(list1,list2) =>list1.length >= list2.length ? list1.map( function(a,b) {return [a,list2[b]]}) :  list1.map( function(a,b) {return [a,list2[b]]}) );
+return x;
+
+}
+//console.log(multiZipAny([1, 2], [3,4,5],[6,7,8,9]));
+
+Q13
+
+function isDefined(){
+    var results = ...;
+        results.key = null ? throw[${key} is not defined] : throw[${key} is defined];
+}
+//console.log(isDefined());
+
+Q14	
+The system that is created by re-using the code in the software development process, solving the resulting software problems and coding these solutions into standards and reusable codes is called the Design Pattern. Any project using design patterns can be easily decoded. This makes the software developed in general in accordance with certain standards, improves performance and saves the project from unnecessary coding. To give an example, factory method pattern, which is creational one, mediator, which is behavioral one, and decorator, which is structural one, are 3 of the 23 accepted design patterns in JavaScript.
+Factory method pattern specifies the requirements of a public class to be implemented; components, without having to know about public class to be implemented. In general, it allows the object to be created without detailed knowledge of the process of the object requested by client. We should use this design pattern when we have more than one class, and these classes, having the same objects, will be implemented from a general behavior prototype, but if we do not have general protocol, we should not use this pattern.
+	Example; (optimized code)
+		const Animal = function(name){
+	this.name = name;
+}
+animal.prototype.walk = function(){
+	console.log(this.name+” walks”);
+}
+//Now, we can do this
+cat = new Animal(“cat”)
+dog = new Animal(“dog”)
+dog.walk()
+cat.walk()
+
+The mediator design pattern gives central authority over a gathering of items by typifying how these objects collaborate. This model is helpful for situations where there is a need to oversee complex conditions in which each object knows about any state change in any other article in the group. The mediator design pattern is helpful in the improvement of complex structures.
+	Example;
+Think that we have four members that are participating in a chat session by enrolling with a Chatroom (the Mediator). Every member is spoken to by a Participant object. Members send messages to one another and the Chatroom handles the directing. This model is straightforward, yet other complex standards could have been included, for example, a 'junk filter' to shield members from getting garbage messages. 
+
+The decorator design pattern regulates the addition of new methods dynamically to a structure belonging to structural group. It adds a new method to the structure by defining a decorator object that implements the structure’s interface. It contains a reference of the type of interface it implements and contains new methods to be added on this object.
+	Example;
+		var decoratedPet = function(name, owner, age){
+			this.name = name;
+			this.owner = owner;
+			this.age = age;
+			this.say = function(){
+log.add(“Decorated Pet: ” + this.name + “, “+ this.owner + “, “+ this.city);
+}}
+
+Q15
+a)	Using fat-arrow function causes trouble sometimes like using in distance() and area() functions in this code. It is not possible to use because they are methods on an object and if the contexts are dynamic, arrow functions should not be used.
+b)	
+
+
 
